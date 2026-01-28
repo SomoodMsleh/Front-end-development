@@ -7,6 +7,7 @@
 header{
     display: flex;
     gap: 232.5px;
+    padding: 21.84px 165px;
 }
 .nav ul{
     display: flex;
@@ -18,4 +19,27 @@ header{
     display: flex;
     gap: 24px;
     list-style-type: none;
+}
+
+
+.collections{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 80px 165px;
+}
+
+.collection{
+    width: calc((100% - 90px) / 4);
+    text-align: center;
+    
+}
+
+.collection img{
+    width: 100%;
+    height: auto;
+}
+
+.collection h2{
+    margin-top: 23px;
 }
