@@ -25,6 +25,25 @@ h6 {
     font-family: var(--creative-font-heading);
 }
 
+/*Navbar Scrolled State - white bg, dark text*/
+.navbar.navbar-scrolled {
+    background-color: var(--creative-white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: background-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.navbar.navbar-scrolled .navbar-brand {
+    color: var(--creative-dark);
+}
+
+.navbar.navbar-scrolled .nav-link {
+    color: var(--creative-dark);
+}
+
+.navbar.navbar-scrolled .nav-link:hover {
+    color: var(--creative-primary);
+}
+
 .navbar {
     position: fixed;
     top: 0;
