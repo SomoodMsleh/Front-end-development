@@ -114,6 +114,42 @@ h6 {
     top: 8px;
 }
 
+/*Mobile Navigation*/
+@media (max-width: 991px) {
+    .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        top: var(--creative-navbar-height);
+        left: 0;
+        right: 0;
+        background-color: var(--color-white);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-base);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-toggle:checked~.navbar-collapse {
+        max-height: 400px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        padding: var(--space-4);
+        gap: var(--space-4);
+    }
+
+    .nav-link {
+        color: var(--color-gray-600);
+    }
+
+    .nav-link:hover {
+        color: var(--creative-primary);
+    }
+}
 
 .hero {
     position: relative;
@@ -185,4 +221,68 @@ h6 {
     background-color: var(--creative-primary-hover);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(244, 98, 58, 0.4);
+}
+
+/*RESPONSIVE*/
+/*Small devices*/
+@media (max-width: 575px) {
+    .hero {
+        padding-top: calc(var(--creative-navbar-height) + var(--space-4));
+    }
+
+    .hero-content {
+        padding: var(--space-6) var(--space-4);
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+        max-width: 100%;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .hero-btn {
+        padding: var(--space-4) var(--space-8);
+        font-size: var(--font-size-xs);
+    }
+}
+
+/*Medium devices*/
+@media (min-width: 576px) and (max-width: 991px) {
+    .hero-title {
+        font-size: 2.5rem;
+        max-width: 600px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        max-width: 550px;
+    }
+}
+
+/*Large devices*/
+@media (min-width: 992px) {
+    .hero-content {
+        padding: var(--space-12);
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        max-width: 800px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        max-width: 700px;
+    }
+}
+
+/*Extra Large devices*/
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
 }
