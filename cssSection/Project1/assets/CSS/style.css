@@ -6,8 +6,12 @@
 
 header{
     display: flex;
-    gap: 232.5px;
-    padding: 21.84px 165px;
+    justify-content: space-between;
+    padding: 21.84px 0px;
+    align-items: center;
+}
+.container{
+    
 }
 .nav ul{
     display: flex;
@@ -26,7 +30,7 @@ header{
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    padding: 80px 165px;
+    padding: 80px 0px;
 }
 
 .collection{
