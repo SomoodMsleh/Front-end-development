@@ -114,3 +114,75 @@ h6 {
     top: 8px;
 }
 
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: var(--creative-navbar-height);
+    background: linear-gradient(to bottom,
+            rgba(92, 77, 66, 0.8) 0%,
+            rgba(92, 77, 66, 0.8) 100%),
+        url('../img/bg-masthead.jpg') center/cover no-repeat;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: var(--space-8);
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    line-height: 1.2;
+    margin-bottom: var(--space-6);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-divider {
+    width: 50px;
+    height: 3px;
+    background-color: var(--creative-primary);
+    margin: 0 auto var(--space-6);
+    border: none;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    font-weight: var(--font-weight-light);
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    margin-bottom: var(--space-10);
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-btn {
+    background-color: var(--creative-primary);
+    color: var(--color-white);
+    padding: var(--space-5) var(--space-10);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: var(--radius-full);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-btn:hover {
+    background-color: var(--creative-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 98, 58, 0.4);
+}
