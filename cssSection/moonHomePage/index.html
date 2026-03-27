@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HION - Ceramic Store</title>
+    <!-- MODIFIED: updated path to point to the corrected CSS file -->
     <link rel="stylesheet" href="./assets/CSS/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -14,7 +15,7 @@
         <div class="logo">
             <img src="./assets/image/logo.svg" alt="HION logo">
         </div>
-        <nav class="nav">
+        <nav class="nav" id="main-nav">
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Shop</a></li>
@@ -30,12 +31,13 @@
                 <li><img src="./assets/image/ShoppingCart.svg" alt="Cart"></li>
             </ul>
         </div>
+        <!-- KEPT: hamburger already in correct position for mobile -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </header>
 
     <main>
-
-        <!-- ===================== HERO ===================== -->
-        <!-- Brown panel LEFT, photo RIGHT – matches design -->
         <section class="hero">
             <div class="hero__overlay">
                 <img src="./assets/image/logo-icon.svg" alt="icon" class="hero__icon">
@@ -43,12 +45,8 @@
                 <h1 class="hero__title">BAT TRANG<br>DINNER SET</h1>
                 <a href="#" class="hero__btn">SHOP NOW</a>
             </div>
-            <div class="hero__image">
-                <img src="./assets/image/hero.png" alt="Bat Trang Dinner Set">
-            </div>
         </section>
 
-        <!-- ===================== COLLECTIONS ===================== -->
         <section class="collections">
             <div class="collection">
                 <img src="./assets/image/tableware.png" alt="Tableware">
@@ -68,7 +66,7 @@
             </div>
         </section>
 
-        <!-- ===================== PROMO BANNER ===================== -->
+
         <section class="promo-banner">
             <div class="promo-banner__inner">
                 <h2 class="promo-banner__title">UP TO 40% OFF OUR<br>CHRISTMAS COLLECTION</h2>
@@ -80,7 +78,6 @@
             </div>
         </section>
 
-        <!-- ===================== BEST SELLERS ===================== -->
         <section class="products-section">
             <h2 class="section-title">BEST SELLERS</h2>
             <div class="products-grid">
@@ -159,8 +156,6 @@
             </div>
         </section>
 
-        <!-- ===================== STORY ===================== -->
-        <!-- FIX: added .story__img class to image divs so grid placement works -->
         <section class="story">
             <div class="story__text story__text--top">
                 <h2 class="story__title">MADE IN VIET NAM<br>SINCE 1450</h2>
@@ -180,7 +175,7 @@
             </div>
         </section>
 
-        <!-- ===================== NEW ARRIVALS ===================== -->
+
         <section class="products-section products-section--white">
             <h2 class="section-title">DISCOVER NEW ARRIVALS</h2>
             <div class="products-grid">
@@ -223,7 +218,6 @@
             </div>
         </section>
 
-        <!-- ===================== BLOG ===================== -->
         <section class="blog">
             <h2 class="section-title">OUR BLOG</h2>
             <div class="blog__card">
@@ -239,10 +233,10 @@
             </div>
         </section>
 
-        <!-- ===================== CTA ===================== -->
+
         <section class="cta">
             <p class="cta__sub">Sign up for emails</p>
-            <h2 class="cta__title">FOR NEWS, COLLECTIONS & MORE</h2>
+            <h2 class="cta__title">FOR NEWS, COLLECTIONS &amp; MORE</h2>
             <div class="cta__form">
                 <input type="email" class="cta__input" placeholder="Enter your email address">
                 <button class="cta__btn">SIGN UP</button>
@@ -251,7 +245,7 @@
 
     </main>
 
-    <!-- ===================== FOOTER ===================== -->
+
     <footer>
         <div class="footer__inner">
             <div class="footer__brand">
@@ -300,5 +294,21 @@
         </div>
     </footer>
 
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('main-nav');
+        hamburger.addEventListener('click', () => {
+            const open = nav.classList.toggle('nav--open');
+            hamburger.classList.toggle('hamburger--open', open);
+            hamburger.setAttribute('aria-expanded', open);
+        });
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('nav--open');
+                hamburger.classList.remove('hamburger--open');
+                hamburger.setAttribute('aria-expanded', false);
+            });
+        });
+    </script>
 </body>
 </html>

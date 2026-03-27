@@ -18,13 +18,15 @@ img { display: block; max-width: 100%; }
 
 /* ============================================================
    HEADER
+   MODIFIED: padding changed from fixed "0 165px"
+             to clamp(20px, 11.5vw, 165px) so it scales on all screens.
    ============================================================ */
 header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 165px;
+    padding: 0 clamp(20px, 11.5vw, 165px);
     height: 82px;
     background: #fff;
     border-bottom: 1px solid #000;
@@ -34,13 +36,13 @@ header {
 }
 
 .logo img {
-    width: 145px;
+    width: 120px;
     height: auto;
 }
 
 .nav ul {
     display: flex;
-    gap: 60px;
+    gap: 40px;                  /* MODIFIED: was 60px — tighter on mid-screen */
 }
 
 .nav ul li a {
@@ -56,7 +58,7 @@ header {
 .icons ul {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
 }
 
 .icons ul li {
@@ -72,29 +74,21 @@ header {
 
 /* ============================================================
    HERO
+   MODIFIED:
+   · height: 640px  →  min-height: 640px  (grows on tall viewports)
+   · hero__overlay width: 420px  →  clamp(260px, 30vw, 420px)
+   · hero__overlay margin-left: 165px  →  clamp(20px, 11.5vw, 165px)
    ============================================================ */
 .hero {
     display: flex;
-    height: 640px;
+    min-height: 640px;
     width: 100%;
+    background: url('../image/hero.png') center / cover no-repeat;
+    align-items: stretch;
 }
 
-/* Left: big photographic image */
-.hero__image {
-    flex: 1;
-    overflow: hidden;
-}
-
-.hero__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* Right: brown content panel */
 .hero__overlay {
-    width: 420px;
+    width: clamp(260px, 30vw, 420px);
     flex-shrink: 0;
     background: #826F66;
     display: flex;
@@ -102,14 +96,12 @@ header {
     justify-content: center;
     align-items: center;
     gap: 20px;
+    margin-left: clamp(20px, 11.5vw, 165px);
     padding: 40px 24px;
     text-align: center;
 }
 
-.hero__icon {
-    width: 85px;
-    height: auto;
-}
+.hero__icon { width: 85px; height: auto; }
 
 .hero__sub {
     font-family: 'Inter', sans-serif;
@@ -122,8 +114,8 @@ header {
 .hero__title {
     font-family: 'Garamond', 'Playfair Display', serif;
     font-weight: 700;
-    font-size: 36px;
-    line-height: 40px;
+    font-size: clamp(26px, 3vw, 36px);       /* MODIFIED: was fixed 36px */
+    line-height: 1.2;
     letter-spacing: 0.04em;
     color: #FFFDFB;
     text-transform: uppercase;
@@ -134,36 +126,43 @@ header {
     justify-content: center;
     align-items: center;
     padding: 15px 18px;
-    width: 220px;
+    width: 200px;
     background: #fff;
+    border: 1px solid transparent;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 14px;
     color: #826F66;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    transition: background .2s, color .2s;
+    transition: background .2s, color .2s, border-color .2s;
 }
-.hero__btn:hover { background: #826F66; color: #fff; border: 1px solid #fff; }
+.hero__btn:hover { background: #826F66; color: #fff; border-color: #fff; }
 
 /* ============================================================
    COLLECTIONS ROW  (4 cards)
+   MODIFIED:
+   · padding: fixed 80px 165px  →  clamp()
+   · Added flex-wrap + min-width so cards wrap on narrow screens
+   · flex: 1  →  flex: 1 1 calc(25% - 23px) with min-width:160px
    ============================================================ */
 .collections {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;                          /* MODIFIED: was missing */
     align-items: flex-start;
-    padding: 80px 165px;
+    padding: clamp(40px, 5.5vw, 80px) clamp(20px, 11.5vw, 165px);
     gap: 30px;
     background: #fff;
 }
 
 .collection {
-    flex: 1;
+    flex: 1 1 calc(25% - 23px);              /* MODIFIED: was flex:1 — no wrapping */
+    min-width: 160px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 23px;
+    gap: 16px;
 }
 
 .collection img {
@@ -176,7 +175,7 @@ header {
 .collection__label {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -185,12 +184,15 @@ header {
 
 /* ============================================================
    PROMO BANNER  (text left | image right)
+   MODIFIED: padding: fixed 0 165px  →  clamp()
+             inner padding fixed  →  clamp()
+             title font-size fixed  →  clamp()
    ============================================================ */
 .promo-banner {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    padding: 0 165px;
+    padding: 0 clamp(20px, 11.5vw, 165px);
     background: #fff;
     min-height: 350px;
 }
@@ -202,7 +204,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 64px 60px;
+    padding: clamp(32px, 5vw, 64px) clamp(24px, 4vw, 60px);
     gap: 20px;
     text-align: center;
 }
@@ -210,8 +212,8 @@ header {
 .promo-banner__title {
     font-family: 'Garamond', 'Playfair Display', serif;
     font-weight: 700;
-    font-size: 28px;
-    line-height: 32px;
+    font-size: clamp(20px, 2.5vw, 28px);
+    line-height: 1.25;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #3A3845;
@@ -221,7 +223,7 @@ header {
 .promo-banner__body {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 24px;
     color: #595667;
     max-width: 389px;
@@ -253,56 +255,60 @@ header {
 
 /* ============================================================
    SECTION TITLE  (shared)
+   MODIFIED: font-size fixed 30px  →  clamp(22px, 2.5vw, 30px)
    ============================================================ */
 .section-title {
     font-family: 'Garamond', 'Playfair Display', serif;
     font-weight: 700;
-    font-size: 30px;
-    line-height: 36px;
+    font-size: clamp(22px, 2.5vw, 30px);
+    line-height: 1.2;
     text-align: center;
     text-transform: uppercase;
     color: #3A3845;
     margin-bottom: 48px;
+    width: 100%;
 }
 
 /* ============================================================
-   PRODUCTS SECTIONS  (best sellers / new arrivals)
+   PRODUCTS SECTIONS
+   MODIFIED:
+   · padding: fixed 80px 165px  →  clamp()
+   · products-grid: was display:flex with fixed 255px cards.
+     Changed to display:grid with repeat(4,1fr) — perfectly fills
+     available space and column count is controlled by breakpoints.
+   · product-card: removed fixed width:255px  →  width:100%
+   · product-card__img-wrap: removed fixed 255×321px
+     →  width:100% + aspect-ratio:255/321 so it scales with card
+   · product-card__btn: removed fixed width:255px  →  width:100%
    ============================================================ */
 .products-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 80px 165px;
+    padding: clamp(40px, 5.5vw, 80px) clamp(20px, 11.5vw, 165px);
     background: #fff;
     position: relative;
 }
 
-.products-section--white {
-    background: #fff;
-    opacity: 0.9;
-}
+.products-section--white { background: #fff; }
 
 .products-grid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);   /* MODIFIED: was display:flex */
     gap: 30px;
     width: 100%;
-    justify-content: center;
 }
 
-/* Each card */
 .product-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 255px;
+    width: 100%;                              /* MODIFIED: was width:255px */
     gap: 10px;
 }
 
 .product-card__img-wrap {
-    width: 255px;
-    height: 321px;
+    width: 100%;                              /* MODIFIED: was width:255px */
+    aspect-ratio: 255 / 321;                 /* MODIFIED: was height:321px */
     background: #F7F6F5;
     overflow: hidden;
     flex-shrink: 0;
@@ -321,7 +327,7 @@ header {
 .product-card__name {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 20px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -339,7 +345,7 @@ header {
 .product-card__desc {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 22px;
     color: #807F86;
     flex-grow: 1;
@@ -350,19 +356,20 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px 18px;
-    width: 255px;
+    padding: 10px 12px;
+    width: 100%;                              /* MODIFIED: was width:255px */
     height: 39px;
     background: transparent;
     border: 1px solid #3A3845;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 18px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #3A3845;
     cursor: pointer;
+    white-space: nowrap;
     transition: background .2s, color .2s;
 }
 .product-card__btn:hover { background: #3A3845; color: #fff; }
@@ -449,12 +456,15 @@ header {
 
 /* ============================================================
    BLOG
+   MODIFIED: padding: fixed 80px 165px  →  clamp()
+             inner padding: fixed  →  clamp()
+             title font-size: fixed  →  clamp()
    ============================================================ */
 .blog {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 80px 165px;
+    padding: clamp(40px, 5.5vw, 80px) clamp(20px, 11.5vw, 165px);
     background: #fff;
 }
 
@@ -472,14 +482,14 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 64px 60px;
+    padding: clamp(32px, 5vw, 64px) clamp(24px, 4vw, 60px);
     gap: 20px;
 }
 
 .blog__category {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -489,8 +499,8 @@ header {
 .blog__title {
     font-family: 'Garamond', 'Playfair Display', serif;
     font-weight: 700;
-    font-size: 28px;
-    line-height: 32px;
+    font-size: clamp(20px, 2.5vw, 28px);
+    line-height: 1.25;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #3A3845;
@@ -500,7 +510,7 @@ header {
 .blog__body {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 24px;
     color: #595667;
     max-width: 389px;
@@ -521,23 +531,24 @@ header {
 .blog__card-image {
     flex: 1;
     overflow: hidden;
+    min-height: 300px;
 }
 
-.blog__card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+.blog__card-image img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ============================================================
    CTA / NEWSLETTER
+   MODIFIED:
+   · padding: fixed 80px 60px  →  clamp()
+   · cta__input: fixed width:389px  →  width:100% + max-width:389px
+   · title font-size: fixed  →  clamp()
    ============================================================ */
 .cta {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 80px 60px;
+    padding: clamp(48px, 5.5vw, 80px) clamp(20px, 4vw, 60px);
     background: #fff;
     gap: 0;
     text-align: center;
@@ -555,8 +566,8 @@ header {
 .cta__title {
     font-family: 'Garamond', 'Playfair Display', serif;
     font-weight: 700;
-    font-size: 28px;
-    line-height: 32px;
+    font-size: clamp(20px, 2.5vw, 28px);
+    line-height: 1.25;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #3A3845;
@@ -573,7 +584,8 @@ header {
 }
 
 .cta__input {
-    width: 389px;
+    width: 100%;                              /* MODIFIED: was fixed 389px */
+    max-width: 389px;
     padding: 14px 0;
     background: transparent;
     border: none;
@@ -594,7 +606,7 @@ header {
     justify-content: center;
     align-items: center;
     padding: 15px 24px;
-    width: 103px;
+    min-width: 103px;
     height: 39px;
     background: transparent;
     border: 1px solid #3A3845;
@@ -612,6 +624,11 @@ header {
 
 /* ============================================================
    FOOTER
+   MODIFIED:
+   · footer__inner padding: fixed 60px 165px 0  →  clamp()
+   · footer__nav-group gap: 72px  →  48px; added flex-wrap
+   · footer__bottom padding: fixed 32px 165px  →  clamp()
+     and margin-top added (was margin:0 0 which touched blog)
    ============================================================ */
 footer {
     background: #3A3845;
@@ -625,22 +642,22 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 60px 165px 0;
-    gap: 71px;
+    padding: 60px clamp(20px, 11.5vw, 165px) 0;
+    gap: 48px;
 }
 
-/* Brand column */
 .footer__brand {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
     max-width: 303px;
+    flex-shrink: 0;
 }
 
 .footer__logo-wrap { margin-bottom: 0; }
 
-.footer__logo { width: 145px; height: auto; filter: invert(1) brightness(1); }
+.footer__logo { width: 120px; height: auto; filter: invert(1) brightness(1); }
 
 .footer__brand-text {
     font-family: 'Inter', sans-serif;
@@ -670,7 +687,6 @@ footer {
 }
 .footer__start-btn:hover { background: rgba(255,255,255,.1); }
 
-/* Vertical divider */
 .footer__divider {
     width: 1px;
     background: #CAC9CF;
@@ -678,35 +694,31 @@ footer {
     flex-shrink: 0;
 }
 
-/* Nav group */
 .footer__nav-group {
     display: flex;
     flex-direction: row;
-    gap: 72px;
+    gap: 48px;                                /* MODIFIED: was 72px */
     flex: 1;
+    flex-wrap: wrap;                          /* MODIFIED: added */
 }
 
 .footer__nav {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
 }
 
 .footer__nav h4 {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 22px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #fff;
 }
 
-.footer__nav ul {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
+.footer__nav ul { display: flex; flex-direction: column; gap: 16px; }
 
 .footer__nav ul li a {
     font-family: 'Inter', sans-serif;
@@ -718,30 +730,149 @@ footer {
 }
 .footer__nav ul li a:hover { color: #fff; }
 
-/* Footer bottom bar */
 .footer__bottom {
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 32px 165px;
-    margin: 0 0;
+    padding: 32px clamp(20px, 11.5vw, 165px); /* MODIFIED: was fixed */
+    margin-top: 48px;                          /* MODIFIED: was margin:0 0 */
     border-top: 1px solid #CAC9CF;
 }
 
 .footer__bottom p {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 22px;
     text-align: center;
     color: #A6A6A8;
     flex: 1;
 }
 
-.footer__bottom p a {
-    color: #A6A6A8;
-    text-decoration: underline;
-}
+.footer__bottom p a { color: #A6A6A8; text-decoration: underline; }
 .footer__bottom p a:hover { color: #fff; }
+
+/* ============================================================
+   HAMBURGER
+   MODIFIED: was display:none with NO rule to re-show it.
+             Added display:flex inside the 768px breakpoint below.
+   ============================================================ */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+}
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #3A3845;
+    border-radius: 2px;
+    transition: transform .3s, opacity .3s;
+}
+.hamburger--open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger--open span:nth-child(2) { opacity: 0; }
+.hamburger--open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ADDED: The original file had zero media queries.
+   ============================================================ */
+
+/* ------ 1024px — Tablet landscape ------ */
+@media (max-width: 1024px) {
+
+    /* Products: 4 → 3 columns */
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ------ 768px — Tablet portrait / large phone ------ */
+@media (max-width: 768px) {
+
+    /* Header: show hamburger, hide nav */
+    .hamburger { display: flex; }
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: 82px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        padding: 24px;
+        z-index: 99;
+    }
+    .nav.nav--open { display: block; }
+    .nav ul { flex-direction: column; gap: 20px; }
+
+    /* Hero: stack panel on top of bg image */
+    .hero { flex-direction: column; min-height: auto; }
+    .hero__overlay { width: 100%; margin-left: 0; min-height: 300px; }
+
+    /* Collections: 4 → 2 per row */
+    .collection { flex: 1 1 calc(50% - 15px); }
+
+    /* Promo banner: side-by-side → stacked */
+    .promo-banner { flex-direction: column; padding: 0; }
+    .promo-banner__image { min-height: 260px; }
+
+    /* Products: 3 → 2 columns */
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* Story: collapse 2-col grid into single-column with flex */
+    .story {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+    /* clear grid placement so CSS order works */
+    .story__text--top,
+    .story__img--top,
+    .story__img--bottom,
+    .story__text--bottom {
+        grid-column: unset;
+        grid-row: unset;
+    }
+    .story__text--top    { order: 1; }
+    .story__img--top     { order: 2; min-height: 280px; }
+    .story__img--bottom  { order: 3; min-height: 280px; }
+    .story__text--bottom { order: 4; }
+
+    /* Blog: side-by-side → stacked */
+    .blog__card { flex-direction: column; }
+    .blog__card-image { min-height: 260px; }
+
+    /* Footer: row → column */
+    .footer__inner { flex-direction: column; gap: 32px; }
+    .footer__divider { width: 100%; height: 1px; align-self: auto; }
+    .footer__brand { max-width: 100%; }
+    .footer__nav-group { gap: 32px; }
+}
+
+/* ------ 480px — Small phone ------ */
+@media (max-width: 480px) {
+
+    /* Collections: 2 → 1 per row */
+    .collection { flex: 1 1 100%; }
+
+    /* Products: 2 → 1 column */
+    .products-grid { grid-template-columns: 1fr; }
+
+    /* Footer nav columns → single column */
+    .footer__nav-group { flex-direction: column; }
+
+    .section-title { font-size: 20px; }
+    .footer__bottom p { font-size: 12px; }
+}
