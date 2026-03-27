@@ -286,3 +286,28 @@ h6 {
         max-width: 1140px;
     }
 }
+
+.about-divider {
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-white);
+    border: none;
+    opacity: 1;
+}
+
+.about .btn:hover {
+    background-color: var(--color-gray-100) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 576px) {
+    .about .container {
+        padding-top: var(--space-16) !important;
+        padding-bottom: var(--space-16) !important;
+    }
+
+    .about-title {
+        font-size: var(--font-size-2xl);
+    }
+}
