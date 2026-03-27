@@ -311,3 +311,35 @@ h6 {
         font-size: var(--font-size-2xl);
     }
 }
+
+.services-divider {
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-primary);
+    border: none;
+    opacity: 1;
+}
+
+.service-item i {
+    transition: transform var(--transition-base);
+    display: inline-block;
+}
+
+.service-item:hover i {
+    transform: scale(1.1);
+}
+
+.services {
+    padding-top: var(--space-24) !important;
+    padding-bottom: var(--space-24) !important;
+}
+
+@media (max-width: 768px) {
+    .services {
+        padding-top: var(--space-16) !important;
+    }
+
+    .service-item i {
+        font-size: 3.5rem !important;
+    }
+}
