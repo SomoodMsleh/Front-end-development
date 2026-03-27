@@ -436,3 +436,54 @@ h6 {
     }
 }
 
+.contact {
+    padding-top: var(--space-24) !important;
+    padding-bottom: var(--space-24) !important;
+}
+
+.mb-20 {
+    margin-bottom: 5rem !important;
+}
+
+.mb-24 {
+    margin-bottom: 6rem !important;
+}
+
+.form-control-custom {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-control-custom:focus {
+    border-color: #f4623a;
+    box-shadow: 0 0 0 0.25rem rgba(244, 98, 58, 0.1);
+}
+
+.btn-submit-lg {
+    background-color: #f4623a;
+    color: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-submit-lg:hover {
+    background-color: #ee3e0d;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(244, 98, 58, 0.3);
+}
+
