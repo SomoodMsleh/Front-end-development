@@ -378,3 +378,61 @@ h6 {
 .portfolio-box:hover .portfolio-box-caption {
     opacity: 1;
 }
+
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.g-0 {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+.g-0>.col,
+.g-0>[class*="col-"] {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.cta {
+    background-color: #212529 !important;
+    margin: 0 !important;
+    padding-top: var(--space-24) !important;
+    padding-bottom: var(--space-24) !important;
+}
+
+.cta h2 {
+    margin-bottom: var(--space-16) !important;
+    letter-spacing: 0.03em;
+}
+
+.cta .btn {
+    min-width: 280px;
+    letter-spacing: 0.15em;
+    font-size: var(--font-size-base);
+    transition: all var(--transition-base);
+}
+
+.cta .btn:hover {
+    background-color: var(--color-gray-100) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .cta {
+        padding-top: var(--space-20) !important;
+        padding-bottom: var(--space-20) !important;
+    }
+
+    .cta h2 {
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--space-12) !important;
+    }
+
+    .cta .btn {
+        min-width: 220px;
+        padding: var(--space-4) var(--space-10);
+    }
+}
+
