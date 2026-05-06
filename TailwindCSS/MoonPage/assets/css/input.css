@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme{
+    --font-inter: 'Inter', sans-serif;
+    --font-eb-garamond: 'EB Garamond', serif;
+    --color-primary-warm: #3A3845;
+    --color-primary-cool: #826F66;
+}
+
+@layer components{
+    .nav-link{
+        @apply text-primary-warm text-[14px];
+    }
+    
+}
+
